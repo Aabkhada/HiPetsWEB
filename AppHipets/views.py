@@ -70,7 +70,7 @@ def loginPage(request):
 
             if user is not None:
                 login(request,user)
-                return redirect('/productos')
+                return redirect('/catalogo')
             else:
                 messages.info(request,'Usuario o password incorrecto')
         return render(request,'login.html')
