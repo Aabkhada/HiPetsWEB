@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HiPets</title>
+</head>
+<body>    
+    <form method="POST" action="/update/{{id_producto}}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td>nombre:</td>
+                <td>{{ form.nombre }}</td>
+            </tr>
+            <tr>
+                <td>info:</td>
+                <td>{{ form.info }}</td>
+            </tr>
+            <tr>
+                <td>precio:</td>
+                <td>{{ form.precio }}</td>
+            </tr>
+            <tr>
+            <tr>
+                <td>url:</td>
+                <td>{{ form.img }}</td>
+            </tr>
+            <tr>
+                <td>mascota:</td>
+                <td>{{ form.mascota }}</td>
+            </tr>
+            <tr>
+                <td>tipo:</td>
+                <td>{{ form.tipo }}</td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Grabar"></td>
+                <td></td>
+            </tr>
+        </table>
+
+    </form>
