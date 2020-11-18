@@ -1,0 +1,122 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HiPets</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+
+</head>
+<body>
+    <!--navbar-->
+
+    <nav class="navbar sticky-top navbar-expand-sm navbar-dark bg-dark">
+      <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+              <img src="{% static 'img/HiPets.png' %}" alt="" width="200">
+          </a>
+          <button class="navbar-toggler" 
+          type="button" 
+          data-toggle="collapse" 
+          data-target="#navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toogle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ml-auto ">
+                  <li class="nav-item pl-1"><a class="nav-link" href="index.html">Inicio</a></li>
+                  <li class="nav-item pl-1"><a class="nav-link" href="catalogo.html">Catalogo</a></li>
+                  <li class="nav-item pl-1"><a class="nav-link" href="contacto.html">Contacto</a></li>
+                  {% if user.is_superuser %}
+                    <li class="nav-item pl-1"><a class="nav-link" href="administrar.html">Admin</a></li>
+                    
+                  {% endif %}
+              </ul>
+          </div>
+      </div>
+  </nav>
+  
+    <!--fin navbar-->
+    <div class="catalogue">
+        <div class="row">
+
+        <!-- for listado-->    
+        {% for pro in producto %}
+
+        <div class="col-lg-3 col-6">
+                            
+            <div class="card">
+
+              <div class=" product-grid">
+                <div class="image">
+                  <a href="#">
+                    <img src="{{ pro.img.url }}" class="w-100">
+                    <div class="overlay">
+                      <div class="detail">{{pro.info}}</div>
+                    </div>
+                  </a>
+                </div>
+                <h5 class="text-center">{{pro.nombre}}</h5>
+                <h5 class="text-center">{{pro.precio}}</h5>
+                <a href="#" class="btn buy">COMPRAR</a>
+              </div>   
+            </div>
+
+        </div>
+        
+        {% endfor %}
+        </div>
+    </div>        
+
+  <footer class="bg-dark text-white pt-5 pb-5">
+      <div class="container text-center text-md-left">
+          <div class="row text-center text-md-left">
+              <div class="col-md col-lg3 col-xl-3 mx-auto mt-3">
+                  <h5 class="text-uppercase mb-4 font-weight-bold text-success">compañia</h5>
+                  <p>Hitachi CORP</p>
+              </div>
+  
+  
+      <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+          <h5 class="text-uppercase mb-4 font-weight-bold text-success">Links</h5>
+            <p>
+                <a href="#" class="text-white" style="text-decoration: none;">Inicio</a>
+            </p>
+            <p>
+                <a href="#" class="text-white" style="text-decoration: none;">Catalogo</a>
+            </p>
+            <p>
+                <a href="#" class="text-white" style="text-decoration: none;">Contacto</a>
+            </p>
+            <p>
+                <a href="#" class="text-white" style="text-decoration: none;">Formulario</a>
+            </p>
+            </div>
+      
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+              <h5 class="text-uppercase mb-4 font-weight-bold text-success">Contacto</h5>
+              <p>
+                <i class="fas fa-home mr-3"></i>Rio ñuble 1389, Chile
+              </p>
+              <p>
+                <i class="fas fa-envelope mr-3"></i>hipets@hitachi.cl
+              </p>
+              <p>
+                <i class="fas fa-phone mr-3"></i>+56 9 3314 9275
+              </p>
+            </div>
+        </div>
+      </div>
+  
+  </footer>
+
+
+
+
+</body>
+</html>

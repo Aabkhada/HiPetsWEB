@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HiPets</title>
+</head>
+<body>    
+    <form action="" method="POST">
+    {% csrf_token %}
+        <table>
+            <tr>
+                <td>Usuario:</td>
+                <td>{{form.username}}</td>
+            </tr>
+            <tr>
+                <td>Mail:</td>
+                <td>{{form.email}}</td>
+            </tr>
+            <tr>
+                <td>Contraseña:</td>
+                <td>{{form.password1}}</td>
+            </tr>
+            <tr>
+            <tr>
+                <td>Repita su contraseña:</td>
+                <td>{{form.password2}}</td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Registrarse"></td>
+                <td></td>
+            </tr>
+        </table>
+    </form>
+    {% for message in messages %}
+    <p>{{message}}</p>
+    {% endfor %}
+    <p>Si ya tiene una cuenta? <a href="{% url 'login' %}">Iniciar Sesión</a></p>
+
+</body>
+</html>
