@@ -26,11 +26,15 @@ urlpatterns = [
     path('update/<int:id>', views.modificar),
     path('delete/<int:id>', views.eliminar),
     path('catalogo/', views.catalogo, name='catalogo'),
+    path('index/', views.index, name='index'),
+    path('contacto/', views.contacto, name='contacto'),
+    path('formulario/', views.formulario, name='formulario'),
 
     #urls admin
     path('panelAdmin/',views.panelAdmin, name='panelAdmin'),
-    path('panelProductos/',views.productos, name='productos'),
-    
+    path('productos/',views.productos, name='productos'),
+    path('usuarios/',views.usuarios, name='usuarios'),
+    path('formularios/',views.formularios, name='formularios'),
 
     #urls users
     path('login/', views.loginPage, name='login'),
@@ -43,5 +47,8 @@ urlpatterns = [
     path('reset_password_confirmar/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name="reset_password_form.html"), name='password_reset_confirm'),
     path('reset_password_listo/', auth_views.PasswordResetCompleteView.as_view(template_name="reset_password_confirm.html"), name='password_reset_complete'),    
 
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] 
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

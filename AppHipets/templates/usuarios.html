@@ -1,0 +1,24 @@
+
+
+
+
+
+<h1>Lista de usuarios</h1>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Admin</th>
+        </tr>
+        {% for usr in usuarios %}
+        <tr>
+            <td>{{ usr.id }}</td>
+            <td>{{ usr.username }}</td>
+            <td>{{ usr.email }}</td>
+            <td>{{ usr.is_superuser }}</td>            
+        </tr>
+        {% endfor %}
+    </thead>
+</table>

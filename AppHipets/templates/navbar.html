@@ -1,0 +1,40 @@
+{% load static %}
+<html>
+    <body>
+        <nav class="navbar sticky-top navbar-expand-sm navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="{% url 'index' %}">
+                    <img src="{% static 'img/HiPets.png' %}" alt="" width="200">
+                </a>
+                <button class="navbar-toggler col-3" 
+                type="button" 
+                data-toggle="collapse" 
+                data-target="#navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toogle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto ">
+                    {% if user.is_superuser %}
+                    <li class="nav-item pl-1"><a class="nav-link" href="{% url 'panelAdmin' %}">Admin</a></li>                
+                    {% endif %}
+                        <li class="nav-item pl-1"><a class="nav-link" href="{% url 'index' %}">Inicio</a></li>
+                        <li class="nav-item pl-1"><a class="nav-link" href="{% url 'catalogo' %}">Catalogo</a></li>
+                        <li class="nav-item pl-1"><a class="nav-link" href="{% url 'contacto' %}">Contacto</a></li>
+                        {% if user.is_authenticated %}
+                        <li class="nav-item pl-1"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+                        {% else %}
+                        <li class="nav-item pl-1"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script src="{% static 'js/isotope.min.js' %}"></script>
+        <script src="{% static 'js/popper.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+</body>
+</html>
