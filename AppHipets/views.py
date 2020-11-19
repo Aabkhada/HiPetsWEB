@@ -5,11 +5,12 @@ from django.template import Template,context,loader
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required,user_passes_test
 
 # Create your views here.
 
 @login_required(login_url='login')
+@user_passes_test((lambda u: u.is_superuser),login_url='login')
 def productos(request):
     form = ProductoForm()
     producto = Producto.objects.all()
@@ -24,9 +25,14 @@ def productos(request):
                 pass
     else:
         form = ProductoForm()
+    return render(request, 'productos.html',{'form':form, 'producto': producto})
 
-    context = {'form':form, 'producto': producto}
-    return render(request, 'productos.html',context)
+
+@login_required(login_url='login')
+@user_passes_test(lambda u: u.is_superuser)
+def panelAdmin(request):
+    return render(request, 'panel.html')
+
 
 
 @login_required(login_url='login')    
@@ -103,3 +109,4 @@ def catalogo(request):
     producto = Producto.objects.all()
     context = {'producto': producto}
     return render(request,'catalogo.html',context)
+
