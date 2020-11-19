@@ -1,15 +1,16 @@
 from django.shortcuts import render, redirect
 from AppHipets.models import *
-from AppHipets.form import ProductoForm, CreateUserForm
+from AppHipets.form import ProductoForm, CreateUserForm, FormularioForm
 from django.template import Template,context,loader
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
-
+from django.contrib.auth.decorators import login_required,user_passes_test
+from django.contrib.auth.models import User
 # Create your views here.
 
 @login_required(login_url='login')
+@user_passes_test((lambda u: u.is_superuser),login_url='login')
 def productos(request):
     form = ProductoForm()
     producto = Producto.objects.all()
@@ -24,9 +25,42 @@ def productos(request):
                 pass
     else:
         form = ProductoForm()
+    return render(request, 'productos.html',{'form':form, 'producto': producto})
 
-    context = {'form':form, 'producto': producto}
-    return render(request, 'productos.html',context)
+@login_required(login_url='login')
+def formulario(request):
+    form = FormularioForm()
+    if request.method == 'POST':
+        form = FormularioForm(request.POST, request.FILES)
+        if form.is_valid():
+            try:
+                form.save()
+                return redirect('/index')
+            except:
+                pass
+    else:
+        form = FormularioForm()
+    return render(request, 'formulario.html',{'form':form})
+
+
+
+@login_required(login_url='login')
+@user_passes_test(lambda u: u.is_superuser)
+def panelAdmin(request):
+    return render(request, 'panel.html')
+
+def index(request):
+    return render(request, 'index.html')
+
+def contacto(request):
+    return render(request, 'contacto.html')
+
+def usuarios(request):
+    usuarios = User.objects.all()
+    return render(request, 'usuarios.html',{'usuarios':usuarios})
+
+def formularios(request):
+    return render(request, 'formularios.html')
 
 
 @login_required(login_url='login')    
@@ -70,7 +104,7 @@ def loginPage(request):
 
             if user is not None:
                 login(request,user)
-                return redirect('/productos')
+                return redirect('/catalogo')
             else:
                 messages.info(request,'Usuario o password incorrecto')
         return render(request,'login.html')
@@ -103,3 +137,4 @@ def catalogo(request):
     producto = Producto.objects.all()
     context = {'producto': producto}
     return render(request,'catalogo.html',context)
+

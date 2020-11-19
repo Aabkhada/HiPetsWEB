@@ -25,3 +25,11 @@ class Producto(models.Model):
     tipo = models.ForeignKey(Tipo,on_delete=models.CASCADE,default='')
     class Meta:
         db_table = "producto"
+
+class Formulario(models.Model):
+    id_formulario = models.AutoField(primary_key=True)
+    nombre = models.CharField(max_length= 200)
+    email = models.CharField(max_length=300)
+    file = models.FileField(upload_to='pdf/')
+    class Meta:
+        db_table = "formulario"

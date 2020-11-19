@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HiPets</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+</head>
+<body>
+    <!--navbar-->
+    {% include "navbar.html" %}  
+
+    <!--fin navbar-->
+
+
+    <!--carousel-->
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="{% static 'img/slider/slider1.png' %}" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="{% static 'img/slider/slider2.png' %}" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="{% static 'img/slider/slider3.png' %}" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="{% static 'img/slider/slider4.png' %}" class="d-block w-100" alt="...">
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </a>
+    </div>
+    <!--fin carousel-->
+    <!--Division-->
+    <div id="division" class="container-fluid">
+      <div id="logotype" class="container col-sm-6 col-xl-3 " >
+          <div class="row align-items-center col-sm p-1">
+            <img src="{% static 'img/HiPets.png' %}" class="w-75 mx-auto d-block" alt="">
+          </div>
+          <div class="row align-items-center col-sm p-1 text-light text-center text-shadow">
+            <h6><em>HiPets Porque tu mascota lo vale</em></h6>
+          </div>
+      </div>
+    </div>
+    <!---->
+    <div id="separator-division">
+      <div class="content bg-dark shadow p-3 mb-5"></div>
+    </div>
+    <!---->
+    {% include "footer.html" %}
+    
+
+
+
+
+</body>
+</html>

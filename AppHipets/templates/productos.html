@@ -6,42 +6,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HiPets</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
 </head>
-<body>    
+<body>
+    {% include "navbar.html" %}    
     <a href="{% url 'logout' %}">Salir</a>
     <form  method="post" action="/productos/" enctype="multipart/form-data">
         {% csrf_token %}
-        <table>
-            <tr>
-                <td>nombre:</td>
-                <td>{{ form.nombre }}</td>
-            </tr>
-            <tr>
-                <td>info:</td>
-                <td>{{ form.info }}</td>
-            </tr>
-            <tr>
-                <td>precio:</td>
-                <td>{{ form.precio }}</td>
-            </tr>
-            <tr>
-            <tr>
-                <td>url:</td>
-                <td>{{ form.img }}</td>
-            </tr>
-            <tr>
-                <td>mascota:</td>
-                <td>{{ form.mascota }}</td>
-            </tr>
-            <tr>
-                <td>tipo:</td>
-                <td>{{ form.tipo }}</td>
-            </tr>
-            <tr>
-                <td><input type="submit" value="Grabar"></td>
-                <td></td>
-            </tr>
-        </table>
+        <div class="container">
+            <div class="row ">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-6 alert alert-secondary">
+                    <div class="row ">
+                        <div class="col-6">
+                            <td>Nombre:</td>
+                            <td>{{ form.nombre }}</td>
+                        </div>
+                        <div>
+                            <td>Info:</td>
+                            <td>{{ form.info }}</td>
+                        </div>
+                        <div class="col-3"></div>
+                        <div class="col-6">
+                            <td>Precio:</td>
+                            <td>{{ form.precio }}</td>
+                        </div>
+                        <div>
+                            <td>Imagen:</td>
+                            <td>{{ form.img }}</td>
+                        </div>
+                        <div>
+                            <td>Mascota:</td>
+                            <td>{{ form.mascota }}</td>
+                        </div>
+                        <div>
+                            <td>Tipo:</td>
+                            <td>{{ form.tipo }}</td>
+                        </div>
+                        <div class="col-4"></div>
+                        <div class="col-4"></div><button><input type="submit" value="Grabar"></button></div>                           
+                    </div>                     
+                </div>
+                <div class="col-sm-3"></div>
+                
+            </div>
+        </div>
 
     </form>
     <h1>Lista de Productos</h1>
@@ -77,5 +89,6 @@
     </table>
 
 
+    {% include "footer.html" %} 
 </body>
 </html>
