@@ -1,0 +1,46 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HiPets</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+</head>
+<body>
+{% include "navbar.html" %}
+
+<h1>Lista de Formularios</h1>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>File</th>
+        </tr>
+        {% for formu in formulario %}
+        <tr>
+            <td>{{ formu.id_formulario }}</td>
+            <td>{{ formu.nombre }}</td>
+            <td>{{ formu.email }}</td>
+            <td>{{ formu.file }}</td>
+            <td>
+                <a href="/editarform/{{formu.id_formulario}}">Modificar</a>
+            </td>
+            <td>
+                <a href="/eliminarform/{{formu.id_formulario}}">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </thead>
+</table>
+
+
+{% include "footer.html" %} 
+</body>
+</html>

@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HiPets</title>
+</head>
+<body>    
+    <form method="POST" action="/modificaruser/{{id}}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td>Username:</td>
+                <td>{{ form.username }}</td>
+            </tr>
+            <tr>
+                <td>Email:</td>
+                <td>{{ form.email }}</td>
+            </tr>
+            <tr>
+                <td>Superuser:</td>
+                <td>{{ form.is_superuser }}</td>
+            </tr>
+
+                <td><input type="submit" value="Grabar"></td>
+                <td></td>
+            </tr>
+        </table>
+
+    </form>
+</body>
+</html>

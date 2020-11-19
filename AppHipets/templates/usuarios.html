@@ -1,5 +1,5 @@
 
-
+{% load static %}
 
 
 
@@ -17,7 +17,13 @@
             <td>{{ usr.id }}</td>
             <td>{{ usr.username }}</td>
             <td>{{ usr.email }}</td>
-            <td>{{ usr.is_superuser }}</td>            
+            <td>{{ usr.is_superuser }}</td>
+            <td>
+                <a href="/eliminaruser/{{usr.id}}">eliminar</a>
+            </td>
+            <td>
+                <a href="/editaruser/{{usr.id}}">modificar</a>
+            </td>
         </tr>
         {% endfor %}
     </thead>

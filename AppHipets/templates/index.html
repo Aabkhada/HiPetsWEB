@@ -63,6 +63,40 @@
       <div class="content bg-dark shadow p-3 mb-5"></div>
     </div>
     <!---->
+
+    <div class="container">
+      <div class="catalogue">
+          <div class="row">
+  
+          <!-- for listado-->    
+          {% for pro in producto %}
+  
+          <div class="col-lg-3 col-6">
+                              
+              <div class="card">
+  
+                <div class=" product-grid">
+                  <div class="image">
+                    <a href="#">
+                      <img src="{{ pro.img.url }}" class="w-100">
+                      <div class="overlay">
+                        <div class="detail">{{pro.info}}</div>
+                      </div>
+                    </a>
+                  </div>
+                  <h5 class="text-center">{{pro.nombre}}</h5>
+                  <h5 class="text-center">{{pro.precio}}</h5>
+                  <a href="#" class="btn buy">COMPRAR</a>
+                </div>   
+              </div>
+  
+          </div>
+          
+          {% endfor %}
+          </div>
+      </div>        
+  </div>
+  
     {% include "footer.html" %}
     
 
