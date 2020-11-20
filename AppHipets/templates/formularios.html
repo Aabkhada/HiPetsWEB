@@ -11,11 +11,14 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
 </head>
-<body>
+<body id="form-list-color">
 {% include "navbar.html" %}
-
+<div class="form-list-color">
+<div class="form-list">
+<br>
 <h1>Lista de Formularios</h1>
-<table border="1">
+</div>
+<table border="1" class="container">
     <thead>
         <tr>
             <th>Id</th>
@@ -39,8 +42,6 @@
         {% endfor %}
     </thead>
 </table>
-
-
-{% include "footer.html" %} 
+<div>
 </body>
 </html>

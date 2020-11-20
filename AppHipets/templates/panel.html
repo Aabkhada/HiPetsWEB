@@ -4,18 +4,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
     <title>HiPets</title>
 </head>
-<body>    
-    <h1>panel admin</h1>
-    <div>
-    <a href="{% url 'productos' %}">ADMINISTRAR PRODUCTOS</a>
+<body class="body"> 
+{% include 'navbar.html' %}
+<div class="h1form">
+    <h1>Panel administrativo</h1>
     </div>
-    <div>
-    <a href="{% url 'usuarios' %}">ADMINISTRAR USUARIOS</a>
+    <br>
+    <div class="color-form-background">
+    <div class="color-form">
+        <div class="container">
+            <div>
+                <br>
+                <a href="{% url 'productos' %}">ADMINISTRAR PRODUCTOS</a>
+                <br>
+            </div>
+            <div>
+                <br>
+                <a href="{% url 'usuarios' %}">ADMINISTRAR USUARIOS</a>
+                <br>
+            </div>
+            <div>
+                <br>
+                <a href="{% url 'formularios' %}">ADMINISTRAR FORMULARIOS</a>
+                <br>
+            </div>
+            <br>    
+        </div>
     </div>
-    <div>
-    <a href="{% url 'formularios' %}">ADMINISTRAR FORMULARIOS</a>
-    </div>
+    <br>
+</div>
+<br>
+<br>
+<br>
+    {% include 'footer.html' %}   
 </body>
 </html>

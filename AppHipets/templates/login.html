@@ -1,33 +1,50 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Log-in HiPets</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
 </head>
-<body>    
-    <form action="" method="post">
+
+<body class="login-body">
+{% include "navbar.html" %}      
+        
+    <form action="" method="post" class="formstyle">
+    <br><br><br><br>
         {% csrf_token %}
-        <table>
+<h1 id="IniSesion"> Iniciar sesión </h1>
+        <table class="container col-sm-6"  id="color-login">
             <tr>
                 <td>Usuario:</td>
-                <td><input type="text" name="username" placeholder="usuario.." class="form-control"/></td>
+                <td><input required type="text" name="username" placeholder="Ingrese usuario..." class="form-control"/></td>
             </tr>
+            <tr>
+            <td> </td>
             <tr>
                 <td>Contraseña:</td>
-                <td><input type="password" name="password" placeholder="contraseña.." class="form-control"/></td>
-            </tr>
-            <tr>
-                <td><input type="submit" value="Login"></td>
-                <td></td>
+                <td><input required type="password" name="password" placeholder="Ingrese contraseña..." class="form-control"/></td>
             </tr>
         </table>
+        <center><input id="btnRegistro" type="submit" value="Iniciar sesión"></center>
     </form>
     {% for message in messages %}
     <p>{{ message }}</p>
     {% endfor %}
-    <a href="{% url 'password_reset' %}">¿olvidaste tu contraseña?</a>
-    <a href="{% url 'register' %}">Registrese</a>
+    <div class="btnregister-reset">
+    <div class="container">
+            <a id="passwd-recover" href="{% url 'password_reset' %}">¿Olvidaste tu contraseña? </a>
+            <a href="{% url 'register' %}"> Registrese aquí</a>
+        </div>
+    </div>
 
+    <br>
+    <br>
+    <br>
+{% include "footer.html" %}  
 </body>
 </html>

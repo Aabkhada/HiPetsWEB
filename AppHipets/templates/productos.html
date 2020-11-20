@@ -13,24 +13,28 @@
 </head>
 <body>
     {% include "navbar.html" %}    
-    <a href="{% url 'logout' %}">Salir</a>
     <form  method="post" action="/productos/" enctype="multipart/form-data">
         {% csrf_token %}
-        <div class="container">
+        <div class="container col-sm-8">
             <div class="row ">
+                    <div class="h1-registroproducto">
+                        <h1>Registrar producto<h1>
+                    </div>
                 <div class="col-sm-3"></div>
+                
                 <div class="col-sm-6 alert alert-secondary">
+
                     <div class="row ">
-                        <div class="col-6">
+                        <div class="container">
                             <td>Nombre:</td>
                             <td>{{ form.nombre }}</td>
                         </div>
                         <div>
-                            <td>Info:</td>
+                            <td>Información del producto:</td>
                             <td>{{ form.info }}</td>
                         </div>
-                        <div class="col-3"></div>
-                        <div class="col-6">
+                        <div class="container"></div>
+                        <div class="container">
                             <td>Precio:</td>
                             <td>{{ form.precio }}</td>
                         </div>
@@ -46,30 +50,43 @@
                             <td>Tipo:</td>
                             <td>{{ form.tipo }}</td>
                         </div>
-                        <div class="col-4"></div>
-                        <div class="col-4"></div><button><input type="submit" value="Grabar"></button></div>                           
-                    </div>                     
+                                                 
+                    </div>
+                        <div>
+                        <button><input type="submit" value="Grabar"></button>
+                        </div>   
+                    
                 </div>
-                <div class="col-sm-3"></div>
+
                 
             </div>
+            
         </div>
 
     </form>
-    <h1>Lista de Productos</h1>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>id</th>
-                <th>nombre</th>
-                <th>info</th>
-                <th>precio</th>
-                <th>url</th>
-                <th>mascota</th>
-                <th>tipo</th>
+    <div class="listadoproductos-h1">
+        <h1>Listado de Productos</h1>
+    </div>
+
+            
+ <div class="listadoproductos">
+    <table border="1" class="container">
+
+        <thead class="container">
+                       
+            <tr class="container">
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Información</th>
+                <th>Precio</th>
+                <th>Imágen</th>
+                <th>Mascota</th>
+                <th>Tipo</th>
             </tr>
             {% for pro in producto %}
-            <tr>
+
+            <tr class="container">
+                <br>
                 <td>{{ pro.id_producto }}</td>
                 <td>{{ pro.nombre }}</td>
                 <td>{{ pro.info }}</td>
@@ -77,16 +94,18 @@
                 <td><img src="{{ pro.img.url }}" width="40"></td>
                 <td>{{ pro.mascota }}</td>
                 <td>{{ pro.tipo }}</td>
-                <td>
+                <td class="btnModificar">
                     <a href="/edit/{{pro.id_producto}}">Modificar</a>
                 </td>
-                <td>
+                <td class="btnEliminar">
                     <a href="/delete/{{pro.id_producto}}">Eliminar</a>
                 </td>
             </tr>
             {% endfor %}
         </thead>
     </table>
+    </div>
+    
 
 
     {% include "footer.html" %} 

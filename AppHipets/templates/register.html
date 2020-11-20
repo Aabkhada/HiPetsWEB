@@ -5,38 +5,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HiPets</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
 </head>
-<body>    
+<body>
+ 
+{% include "navbar.html" %}  
     <form action="" method="POST">
+    <div class="container">
     {% csrf_token %}
-        <table>
+        <table class="container">
             <tr>
                 <td>Usuario:</td>
-                <td>{{form.username}}</td>
+                <td><input required type="text" name="username" placeholder="Ingrese usuario..." class="form-control"/></td>
+                
+            </tr>
+            <tr >
+                <td>Email:</td>
+                <td><input required type="text" name="email" id="email" class="form-control" placeholder="Ingrese su Correo" > 
+                    <label for="email">Ingrese su Correo</label></td>
+            </tr>
+            <tr >
+                <td>Ingrese una contraseña de más de 8 carácteres:</td>
+                <td><input required type="password" name="password1" placeholder="Ingrese contraseña..." class="form-control"/></td>
             </tr>
             <tr>
-                <td>Mail:</td>
-                <td>{{form.email}}</td>
-            </tr>
-            <tr>
-                <td>Contraseña:</td>
-                <td>{{form.password1}}</td>
-            </tr>
-            <tr>
-            <tr>
+            <tr >
                 <td>Repita su contraseña:</td>
-                <td>{{form.password2}}</td>
+                <td><input required type="password" name="password2" placeholder="Ingrese contraseña nuevamente..." class="form-control"/></td>
             </tr>
             <tr>
-                <td><input type="submit" value="Registrarse"></td>
+                <td></td>
                 <td></td>
             </tr>
         </table>
+        <center><input id="btnRegistro" type="submit" value="Registrarse"></center>
+        
     </form>
+    
     {% for message in messages %}
     <p>{{message}}</p>
     {% endfor %}
-    <p>Si ya tiene una cuenta? <a href="{% url 'login' %}">Iniciar Sesión</a></p>
-
+    </div>
+    <div class="color-fondo-login">
+    <div class="container">
+        <div class="btnLogin">
+            <p>Ya tiene una cuenta?  <a href="{% url 'login' %}"> -Iniciar Sesión</a></p>
+        </div>
+    </div>
+    </div>
+</div>
+{% include "footer.html" %}  
 </body>
 </html>
